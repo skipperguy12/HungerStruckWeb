@@ -1,0 +1,15 @@
+.col-lg-8
+  .well.bs-component.devise-form
+    = form_for(resource, as: resource_name, url: password_path(resource_name), :html => {:class => "form-horizontal", method: :post}) do |f|
+      = devise_error_messages!
+      %fieldset
+        %legend Forgot your password?
+        .form-group
+          = f.label :email, class: "col-lg-2 control-label"
+          .col-lg-10
+            .form-control-wrapper
+              = f.email_field :email, class: "form-control empty", placeholder: "Email"
+              %span.material-input
+            %br/
+            = button_tag("Send me an email!")
+= render "devise/shared/links"

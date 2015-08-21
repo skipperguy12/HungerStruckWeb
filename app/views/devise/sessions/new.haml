@@ -1,0 +1,23 @@
+.col-lg-8
+  .well.bs-component.devise-form
+    = form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => "form-horizontal"}) do |f|
+      = devise_error_messages!
+      %fieldset
+        %legend Sign in
+        .form-group
+          = f.label :email, class: "col-lg-2 control-label"
+          .col-lg-10
+            = f.text_field :email, class: "form-control empty", placeholder: "Email"
+        .form-group
+          = f.label :password, class: "col-lg-2 control-label"
+          .col-lg-10
+            = f.password_field :password, autocomplete: "off", class: "form-control empty", placeholder: "Password"
+            - if devise_mapping.rememberable?
+              %div
+            .checkbox
+              %label
+                = f.check_box :remember_me
+                = f.label :remember_me
+            %br/
+            = button_tag("Sign in")
+= render "devise/shared/links"

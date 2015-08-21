@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title MongoidForums
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = render 'partials/navbar'
+    .container
+      = render partial: "partials/flash_messages", flash: flash
+      = yield
+    = render 'partials/footer'

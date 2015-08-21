@@ -1,0 +1,32 @@
+.col-lg-12
+  .well.bs-component.devise-form
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => "form-horizontal", method: :put}) do |f|
+      = devise_error_messages!
+      %fieldset
+        %legend Edit your details
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+        .form-group
+          = f.label :password, class: "col-lg-2 control-label"
+          .col-lg-10
+            .form-control-wrapper
+              = f.password_field :password, class: "form-control empty", placeholder: "Password"
+              %span.material-input
+
+        .form-group
+          = f.label :password_confirmation, class: "col-lg-2 control-label"
+          .col-lg-10
+            .form-control-wrapper
+              = f.password_field :password_confirmation, class: "form-control empty", placeholder: "Password Confirmation"
+              %span.material-input
+
+        .form-group
+          = f.label :current_password, class: "col-lg-2 control-label"
+          .col-lg-10
+            .form-control-wrapper
+              = f.password_field :current_password, class: "form-control empty", placeholder: "Current Password"
+              %span.material-input
+            %br/
+            = button_tag("Update")

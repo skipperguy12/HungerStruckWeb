@@ -5,6 +5,9 @@ class User
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #has_one :key, class_name: "Key"
+  field :names, :type => Array, :default => []
+  field :uuid, :type => BSON::Binary
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""

@@ -37,6 +37,38 @@ class User
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
 
+  field :last_response, type: Time
+
+  # Singleton methods
+  class << self
+    # Gets all active users
+    def active_users
+      users = $redis.get('active_users')
+      if users
+        JSON.parse(users)
+      else users
+        users = []
+        User.where(last_response: {"$gt" => 5.minutes.ago }).each do |user|
+          users << user.forum_display_name
+        end
+        $redis.set('active_users', users)
+        $redis.expire('active_users', 1.minute)
+        users
+      end
+    end
+  end
+
+
+  def get_mod_groups
+    array = Array.new
+    MongoidForums::Group.each do |group|
+      if group.members.include?(id)
+        array << group
+      end
+    end
+    return array
+  end
+
   def forum_display_name
     email
   end

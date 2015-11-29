@@ -37,6 +37,11 @@ gem 'autoprefixer-rails'
 gem 'kaminari-views-bootstrap', :git => "https://github.com/NJayDevelopment/kaminari-views-bootstrap"
 gem 'sanitize'
 
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
+gem 'redis-rack-cache'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

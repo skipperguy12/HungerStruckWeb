@@ -1,5 +1,5 @@
 MongoidForums::Topic.class_eval do
-=begin
+
     # Redefinition
     # Near total change, adds redis caching
     def unread_post_count(user)
@@ -41,5 +41,5 @@ MongoidForums::Topic.class_eval do
 
       return last_post
     end
-=end
+
 end

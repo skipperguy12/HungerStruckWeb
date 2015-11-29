@@ -1,5 +1,4 @@
 MongoidForums::Forum.class_eval do
-=begin
   # Redefinition
   # Near total change, adds redis caching
   def unread_topic_count(user)
@@ -20,5 +19,4 @@ MongoidForums::Forum.class_eval do
     end
     return count.to_i
   end
-=end
 end

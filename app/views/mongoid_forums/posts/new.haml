@@ -1,0 +1,16 @@
+%h1 New Post
+- if params[:reply_to_id]
+  - replying_to = MongoidForums::Post.find(params[:reply_to_id])
+  In reply to:
+  %blockquote
+    = replying_to.text.html_safe
+    %small
+      = replying_to.user.forum_display_name
+
+
+= form_for ([@topic, @post]) do |f|
+  = f.label :text
+  %br
+  = render :partial => "form", :locals => { :f => f }
+  %br
+  = f.submit "Create Reply", :class => "btn btn-primary pull-right", :disable_with => "Creating..."

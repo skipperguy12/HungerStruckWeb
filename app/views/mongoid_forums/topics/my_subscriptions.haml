@@ -1,0 +1,51 @@
+%h2 Your subscriptions
+= paginate @topics, :theme => "tb3"
+  
+.table-responsive
+  %table.table.table-striped
+    %tr
+      %th.col-sm-1
+        %span.label.label-warning *
+      %th.byline
+        Name
+      %th.col-sm-1
+        Last post
+      %th.col-sm-1
+        Posts
+      %th.col-sm-1
+        Views
+      %th
+
+
+    - @topics.each do |sub|
+      - topic = sub.subscribable
+      %tr
+        %td
+          - if topic.unread_post_count(mongoid_forums_user) != 0
+            %span.label.label-warning
+              = topic.unread_post_count(mongoid_forums_user)
+        %td
+          = link_to topic.name, topic
+          - if topic.pinned
+            = icon('bookmark')
+          - if topic.locked
+            = icon('times-circle')
+          - if topic.hidden
+            = icon('eye-slash')
+          %br
+          %small
+            by
+            = topic.user.forum_display_name
+            = time_ago_in_words( topic.created_at )
+            ago
+        %td
+          = topic.posts.last.user.forum_display_name
+          = time_ago_in_words( topic.posts.last.created_at )
+          ago
+        %td
+          = topic.posts.count
+        %td
+          = topic.views_count ? topic.views_count : "None"
+
+        %td
+          = link_to "X", unsubscribe_topic_path(sub.subscribable), :class => "btn btn-small btn-warning"

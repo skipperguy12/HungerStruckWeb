@@ -1,0 +1,21 @@
+.page-header
+  %h1
+    Manage Categories
+
+= link_to "New category", new_admin_category_path, :class => "btn btn-primary pull-right"
+
+%h2 Listing all categories
+%table.table.table-striped
+  %tr
+    %th
+      Name
+    %th
+      Actions
+  - @categories.each do |category|
+    %tr
+      %td
+        = link_to category.name, [:admin, category]
+      %td
+        = link_to "Show", admin_category_path(category), :class => "btn btn-info"
+        = link_to "Edit", edit_admin_category_path(category), :class => "btn btn-warning"
+        = link_to "Destroy", admin_category_path(category), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, :class => "btn btn-danger"

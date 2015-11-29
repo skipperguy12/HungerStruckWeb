@@ -1,0 +1,28 @@
+.page-header
+  %h1
+    Group '#{@group.name}'
+    = link_to "Edit", edit_admin_group_path(@group), :class => "btn btn-warning"
+
+= form_tag admin_group_add_user_path(@group), :method => :post do
+  .row.pull-right
+    .col-xs-8
+      - data_source =  @users.map {|user| "#{user.to_s}" }
+      %input.form-control{:name => "[user][email]", :type => :text, "data-provide" => "typeahead", :autocomplete => :off, "data-source" =>  data_source}
+    .col-xs-4
+      = submit_tag("Add User", :class => "btn btn-primary")
+
+
+%h2 Listing all members
+%table.table.table-striped
+  %tr
+    %th
+      Name
+    %th
+      Actions
+
+  - @group.members.each do |member|
+    %tr
+      %td
+        = MongoidForums.user_class.find(member).forum_display_name
+      %td
+        = link_to "Remove", admin_group_rem_user_path(group_id: @group.id, user: {id: member}), method: :post, data: { confirm: 'Are you certain you want to remove this?' }, class: "btn btn-danger"

@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %title Forums
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = yield(:header) if content_for? :header
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
+  %body
+    = render 'partials/navbar'
+    .container
+      = render partial: "partials/flash_messages", flash: flash
+      .page-header
+        %h1
+          Forums
+          %small
+            Socialize with your friends
+      .row
+        .col-xs-12.col-sm-3.sidebar
+          = render "mongoid_forums/partials/categories"
+          %br
+          = render 'mongoid_forums/partials/active_users'
+        .col-xs-12.col-sm-9
+          = yield
+    = render 'partials/footer'

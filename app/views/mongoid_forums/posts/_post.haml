@@ -1,0 +1,42 @@
+%div{id: post.id}
+  %b
+    = post.user.forum_display_name
+  = labels_for(post.user)
+
+  %a.post-timestamp{href: "/forums/posts/" + post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (post.created_at == post.updated_at ? post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
+    %small
+      - if post.created_at == post.updated_at
+        posted
+      - else
+        updated
+      = time_ago_in_words(post.created_at)
+      ago
+
+  %br
+  - if mongoid_forums_user && post.owner_or_admin?(mongoid_forums_user)
+    .dropdown.pull-right
+      %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Action
+        %span.caret
+      %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+        %li{:role => "presentation"}
+          = link_to 'Quote', new_topic_post_path(post.topic_id, :reply_to_id => post.id)
+        - if can?(:edit_post, post.topic.forum)
+          %li{:role => "presentation"}
+            = link_to "Edit", edit_topic_post_path(post.topic_id, post)
+        - if can?(:destroy_post, post.topic.forum)
+          %li{:role => "presentation"}
+            = link_to "Delete", topic_post_path(post.topic_id, post), :method => :delete
+
+  - else
+    .pull-right
+      = link_to 'Quote', new_topic_post_path(post.topic_id, :reply_to_id => post.id), :class => "btn btn-default"
+
+  %br
+  - if post.reply_to_id
+    = render :partial => 'mongoid_forums/posts/quoted', :locals => {:post => post}
+    %br
+
+  = mongoid_forums_format(post.text)
+  %br
+%hr

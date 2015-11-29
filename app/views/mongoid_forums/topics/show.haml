@@ -1,0 +1,44 @@
+- content_for :header do
+  %style
+    \.post-timestamp {
+    color: grey;
+    }
+
+.page-header
+  %h3
+    = mongoid_forums_format(truncate(@topic.name, length: 70))
+    - if @topic.pinned
+      = icon('bookmark')
+    - if @topic.locked
+      = icon('times-circle')
+    - if @topic.hidden
+      = icon('eye-slash')
+    %small
+      by
+      =@topic.user
+
+- if @topic.can_be_replied_to? && can?(:reply, @topic)
+  = link_to "Reply to topic", new_topic_post_path(@topic), class: "btn btn-primary"
+- if mongoid_forums_user && @topic.subscriber?(mongoid_forums_user.id)
+  = link_to "Unsubscribe", unsubscribe_topic_path(@topic), class: "btn btn-warning"
+-elsif mongoid_forums_user
+  = link_to "Subscribe", subscribe_topic_path(@topic), class: "btn btn-success"
+- if mongoid_forums_admin?
+  .dropdown.pull-right
+    %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
+      Moderate
+      %span.caret
+    %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+      %li{:role => "presentation"}
+        = link_to t("mongoid_forums.topics.actions.hide.#{@topic.hidden}"), toggle_hide_admin_topic_path(@forum, @topic)
+      %li{:role => "presentation"}
+        = link_to t("mongoid_forums.topics.actions.lock.#{@topic.locked}"), toggle_lock_admin_topic_path(@forum, @topic)
+      %li{:role => "presentation"}
+        = link_to t("mongoid_forums.topics.actions.pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@forum, @topic)
+
+= paginate @posts, :theme => 'tb3'
+
+%hr
+
+
+= render @posts

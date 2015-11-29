@@ -1,0 +1,8 @@
+%blockquote
+  - reply_to = MongoidForums::Post.find(post.reply_to_id)
+
+  = mongoid_forums_format(reply_to.text)
+  %small
+    = reply_to.user.forum_display_name
+    = time_ago_in_words(reply_to.created_at)
+    ago

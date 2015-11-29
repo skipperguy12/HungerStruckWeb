@@ -1,0 +1,4 @@
+%h2 Your Topics
+
+= paginate @topics, :theme => 'tb3'
+= render partial: 'table', :locals => {:topics => @topics}

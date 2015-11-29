@@ -1,0 +1,16 @@
+.table-responsive
+  %table.table.table-striped
+    %tr
+      %th.col-sm-1
+        %span.label.label-warning *
+      %th.col-sm-7.byline
+        Name
+      %th.col-sm-2
+        Last post
+      %th.col-sm-1
+        Posts
+      %th.col-sm-1
+        Views
+    - topics.each do |topic|
+      - if can?(:read, topic)
+        = render partial: 'mongoid_forums/topics/topic', :locals => {:topic => topic}

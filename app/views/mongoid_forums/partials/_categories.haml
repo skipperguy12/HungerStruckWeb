@@ -1,0 +1,22 @@
+#forum-sidebar
+  %ul.nav.nav-stacked.nav-pills
+    %li{:role => :presentation, :class => current_page?(forums_path) ? "active" : ""}
+      = link_to "What's New?", forums_path
+    - if current_user
+      %li{:role => :presentation, :class => current_page?(my_subscriptions_path) ? "active" : ""}
+        = link_to "My Subscriptions", my_subscriptions_path
+      %li{:role => :presentation, :class => current_page?(my_topics_path) ? "active" : ""}
+        = link_to "My Topics", my_topics_path
+      %li{:role => :presentation, :class => current_page?(my_posts_path) ? "active" : ""}
+        = link_to "My Posts", my_posts_path
+  - @categories.each do |category|
+    %h4
+      = category.name
+    %ul.nav.nav-stacked.nav-pills{:role => "tablist"}
+      - category.forums.asc(:position).each do |forum|
+        %li{:role => "presentation", :class => (@forum != nil && @forum.id == forum.id) ? "active" : ""}
+          = link_to forum do
+            = forum.name
+            - if mongoid_forums_user && forum.unread_topic_count(mongoid_forums_user) != 0
+              %span.label.label-warning.pull-right
+                = forum.unread_topic_count(mongoid_forums_user)

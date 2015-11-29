@@ -1,0 +1,30 @@
+%tr
+  %td
+    - if current_user && topic.unread_post_count(mongoid_forums_user) != 0
+      %span.label.label-warning
+        = topic.unread_post_count(mongoid_forums_user)
+  %td
+    = link_to mongoid_forums_format(truncate(topic.name, length: 70)), topic
+    - if topic.pinned
+      = icon('bookmark')
+    - if topic.locked
+      = icon('times-circle')
+    - if topic.hidden
+      = icon('eye-slash')
+    %br
+    %small
+      by
+      %div{style: "display: inline-block; color: #{color_for(topic.user)}"}
+        = topic.user.forum_display_name
+      %span{"data-toggle" => "tooltip", "data-placement" => "right", title: (topic.posts.first.created_at == topic.posts.first.updated_at ? topic.posts.first.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.posts.first.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.posts.first.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
+        = time_ago_in_words( topic.created_at )
+        ago
+  %td
+    = topic.last_post.user
+    %a{href: "#{root_path}posts/#{topic[:last_post_at]}" , "data-toggle" => "tooltip", "data-placement" => "right", title: (topic.last_post.created_at == topic.last_post.updated_at ? topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.last_post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
+      = time_ago_in_words( topic[:last_post_at] )
+      ago
+  %td
+    = topic.posts.count
+  %td
+    = topic.views_count ? topic.views_count : "None"

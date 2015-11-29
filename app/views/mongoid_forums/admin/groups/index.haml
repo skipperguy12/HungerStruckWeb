@@ -1,0 +1,27 @@
+.page-header
+  %h1
+    Manage Groups
+    %small
+      panel to provide fine-grain permission control
+
+= link_to "New group", new_admin_group_path, class: "btn btn-primary pull-right"
+
+%h2 Listing all groups
+%table.table.table-striped
+  %tr
+    %th
+      Name
+    %th
+      Moderator
+    %th
+      Actions
+
+  - @groups.each_with_index do |group, i|
+    %tr
+      %td
+        = link_to group.name, [:admin, group]
+      %td
+        = group.moderator
+      %td
+        = link_to "Edit", edit_admin_group_path(group), class: "btn btn-warning"
+        = link_to "Destroy", admin_group_path(group), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "btn btn-danger"

@@ -1,65 +1,52 @@
-.navbar.navbar-default
-  .navbar-header
-    %button.navbar-toggle{"data-target" => ".navbar-responsive-collapse", "data-toggle" => "collapse", :type => "button"}
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    %a.navbar-brand{:href => "/"} HungerStruck
+.container
+  %nav.navbar.navbar-light.bg-faded
+    %button.navbar-toggler.hidden-sm-up{"data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"}
+      \&#9776;
+    #exCollapsingNavbar2.collapse.navbar-toggleable-xs
+      %a.navbar-brand{:href => "/"} HungerStruck
+      %ul.nav.navbar-nav
+        %li{:class => (current_page?("") ? "nav-item active" : "nav-item" )}
+          %a.nav-link{href: "#"}
+            %i.fa.fa-book
+            About
 
-  .navbar-collapse.collapse.navbar-responsive-collapse
-    %ul.nav.navbar-nav
-      %li{:class => (current_page?("") ? "active" : nil )}
-        %a{href: "#"}
-          %i.fa.fa-book
-          About
-    %ul.nav.navbar-nav
-      %li{:class => (params[:controller].starts_with?("mongoid_forums") && !params[:controller].starts_with?("mongoid_forums/admin") ? "active" : nil )}
-        %a{href: "#{main_app.mongoid_forums_path}"}
-          %i.fa.fa-comments
-          Forum
-      - if mongoid_forums_user && mongoid_forums_user.mongoid_forums_admin?
-        %li{:class => (params[:controller].starts_with?("mongoid_forums/admin") ? "active" : nil )}
-          %a{href: "#{mongoid_forums.admin_root_path}"}
-            %i.fa.fa-database
-            Admin
-
-    %ul.nav.navbar-nav.navbar-right
-      - if current_user.present?
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0)"}
-            %i.fa.fa-exclamation-circle{style: (@alerts && !@alerts.empty? ? "color:red;" : "") }
-          %ul.dropdown-menu{role: "menu"}
-            - if @alerts == nil || @alerts.empty?
-              %li
-                %a{href: "#"}
-                  You have no unread alerts!
-            - elsif @alerts
-              - @alerts.take(10).each do |al|
-                %li
-                  - topic = MongoidForums::Post.find(al.mongoid_forums_topic_post_id).topic
-                  = link_to al.text, al.link
-              - if @alerts.size > 10
-                %li
-                  %a
-                    And #{@alerts.size - 10} more...
-      - if current_user
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0)"}
-            =current_user.email
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              =link_to "Edit account", main_app.edit_user_registration_path
-            %li.divider
-            %li
-              =link_to('Logout', main_app.destroy_user_session_path, :method => :delete)
-      - else
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0)"}
-            %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
-            %b.caret
-          %ul.dropdown-menu
-            %li
-              =link_to "Sign in", main_app.new_user_session_path
-            %li
-              =link_to "Sign up", main_app.new_user_registration_path
+        %li{:class => (params[:controller].starts_with?("mongoid_forums") && !params[:controller].starts_with?("mongoid_forums/admin") ? "nav-item active" : "nav-item" )}
+          %a{class: "nav-link", href: "#{main_app.mongoid_forums_path}"}
+            %i.fa.fa-comments
+            Forum
+        - if mongoid_forums_user && mongoid_forums_user.mongoid_forums_admin?
+          %li{:class => (params[:controller].starts_with?("mongoid_forums/admin") ? "nav-item active" : "nav-item" )}
+            %a{class: "nav-link", href: "#{mongoid_forums.admin_root_path}"}
+              %i.fa.fa-database
+              Admin
+        .pull-right
+          %li.nav-item.dropdown
+            - if current_user.present?
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %i.fa.fa-exclamation-circle{style: (@alerts && !@alerts.empty? ? "color:red;" : "") }
+              .dropdown-menu{"aria-labelledby" => "Preview"}
+                - if @alerts == nil || @alerts.empty?
+                  %a.dropdown-item{:href => "#"}
+                    You have no unread alerts!
+                - elsif @alerts
+                  - @alerts.take(10).each do |al|
+                    %a.dropdown-item{:href => al.link}
+                      - topic = MongoidForums::Post.find(al.mongoid_forums_topic_post_id).topic
+                  - if @alerts.size > 10
+                    %a.dropdown-item{:href => "#"}
+                      And #{@alerts.size - 10} more...
+          %li.nav-item.dropdown
+            - if current_user
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = current_user.email
+                %b.caret
+              .dropdown-menu{"aria-labelledby" => "Preview"}
+                =link_to "Edit account", main_app.edit_user_registration_path, class: "dropdown-item"
+                =link_to('Logout', main_app.destroy_user_session_path, :method => :delete, class: "dropdown-item")
+            - else
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %span.glyphicon.glyphicon-user{"aria-hidden" => "true"}
+                %b.caret
+              .dropdown-menu{"aria-labelledby" => "Preview"}
+                =link_to "Sign in", main_app.new_user_session_path, class: "dropdown-item"
+                =link_to "Sign up", main_app.new_user_registration_path, class: "dropdown-item"

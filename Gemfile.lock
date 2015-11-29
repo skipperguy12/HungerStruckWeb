@@ -51,9 +51,9 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.6)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
+    bootstrap (4.0.0.alpha1)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     bootstrap-wysihtml5-rails (0.3.3.7)
       railties (>= 3.0)
     bson (3.2.6)
@@ -210,7 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootstrap-sass (~> 3.3.5)
+  bootstrap (~> 4.0.0.alpha1)
   bootstrap-wysihtml5-rails
   byebug
   coffee-rails (~> 4.1.0)

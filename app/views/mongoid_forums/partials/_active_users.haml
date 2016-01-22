@@ -1,8 +1,8 @@
 
-/- users = User.active_users
-/%h3
-/  Active Users
-/  %small= users.length
+- users = User.active_users
+%h3
+  Active Users
+  %small= users.length
 
-/- joined = users.join(', ')
-/= joined
+- joined = users.join(', ')
+= joined

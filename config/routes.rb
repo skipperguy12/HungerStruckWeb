@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  get '/key/new', to: 'keys#insertkey'
+  get 'tokens_controller', to: 'tokens#create'
   get '/register/register_user', to: 'registrations#registeruser'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

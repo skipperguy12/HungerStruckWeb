@@ -1,4 +1,26 @@
 .col-lg-8
   .well.bs-component.devise-form
-    Register in game
+    %br/
+    #error-true.hidden.alert
+      %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} &#215;
+      .message welp js doesnt work anymore, so ill tell you: we're broken come back later
+
+    #form
+      #token-field.input-group
+        %input.email-field.form-control{:placeholder => "Email address", :type => "text"}
+        %span.input-group-btn
+          %button.register-btn.btn.btn-default{:type => "button"} Go!
+    #confirmation.hidden
+      %br/
+      %p
+        Are you sure
+        %b#email-confirm helpme@imstuck.help
+        is your correct email?
+      %a.btn.btn-danger{:href => new_user_registration_path} Start over
+      %a#continue-btn.btn.btn-primary{"data-toggle" => "tab", :href => "#tab3"} Continue
+    #show-ip.hidden
+      %br/
+      %p Please open Minecraft, click Multiplayer, click Direct Connect, and paste this address:
+      %h2#token x.x.x.x
+
 = render "devise/shared/links"

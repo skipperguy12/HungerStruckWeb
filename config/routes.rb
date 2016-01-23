@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   mount MongoidForums::Engine, :at => "/forums"
-  devise_for :users
+
+  as :user do
+      patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
+  end
+  
+  devise_for :users, :controllers => { :confirmations => "confirmations" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

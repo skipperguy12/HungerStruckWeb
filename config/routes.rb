@@ -5,8 +5,6 @@ Rails.application.routes.draw do
       patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
 
-  get '/:id', to: 'users#show', as: :player
-
   devise_for :users, :controllers => { :confirmations => "confirmations" }
 
 
@@ -18,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'tokens_controller', to: 'tokens#create'
   get '/register/register_user', to: 'registrations#registeruser'
+
+  get '/:id', to: 'users#show', as: :player
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

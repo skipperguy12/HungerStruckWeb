@@ -1,7 +1,7 @@
 ready = ->
   $('.register-btn').click ->
     if $('.email-field').val() == "SPAGETT"
-      window.location.href = "https://www.youtube.com/watch?v=uyh3C1xDT3Y&feature=youtu.be&t=17";
+      window.location.href = "https://kblanks.github.io/";
     console.log('line1')
     $('#show-ip').addClass 'hidden'
     $('#form').addClass 'hidden'

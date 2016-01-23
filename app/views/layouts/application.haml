@@ -9,7 +9,11 @@
     = csrf_meta_tags
   %body
     = render 'partials/navbar'
-    .container
+    - if current_page?(:controller => 'welcome', :action => 'index')
       = render partial: "partials/flash_messages", flash: flash
       = yield
+    - else
+      .container
+        = render partial: "partials/flash_messages", flash: flash
+        = yield
     = render 'partials/footer'

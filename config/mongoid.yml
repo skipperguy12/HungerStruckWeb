@@ -5,7 +5,7 @@ production:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: hungergames
+      database: hungerstruck
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -17,7 +17,7 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: hungergames
+      database: hungerstruck_development
       # Provides the hosts the default session can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -102,7 +102,7 @@ development:
 test:
   clients:
     default:
-      database: hunger_struck_test
+      database: hungerstruck_test
       hosts:
         - localhost:27017
       options:

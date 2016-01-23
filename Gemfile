@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "mongoid"
 gem 'mongoid-forums', '1.0.6'
 gem 'validates_email_format_of'
+gem 'jquery-turbolinks'
 gem 'devise'
 
 gem 'haml'

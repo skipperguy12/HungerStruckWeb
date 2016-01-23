@@ -19,7 +19,7 @@ ready = ->
       $('#confirmation').addClass 'hidden'
       $('#form').removeClass 'hidden'
       return
-      
+
     console.log('line1')
     $('#show-ip').addClass 'hidden'
     $('#form').addClass 'hidden'
@@ -48,7 +48,7 @@ ready = ->
         $('.alert').addClass 'alert-success'
         $('.message').text 'Your token has successfully been created.'
         $('#show-ip').removeClass 'hidden'
-        $('#token').text "#{data.token}.register.hungerstruck.net"
+        $('#token').text "#{data.token}.register.hstrk.xyz"
 
         console.log($('.email-field').val())
         console.log(data)

@@ -56,6 +56,8 @@ GEM
       sass (>= 3.3.4)
     bootstrap-wysihtml5-rails (0.3.3.7)
       railties (>= 3.0)
+    bootswatch-rails (3.3.5)
+      railties (>= 3.1)
     bson (4.0.0)
     builder (3.2.2)
     byebug (8.2.1)
@@ -250,6 +252,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.3.5)
   bootstrap-wysihtml5-rails
+  bootswatch-rails
   byebug
   coffee-rails (~> 4.1.0)
   devise

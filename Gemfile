@@ -34,6 +34,7 @@ gem 'kaminari'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootswatch-rails'
 gem 'autoprefixer-rails'
 gem 'kaminari-views-bootstrap', :git => "https://github.com/NJayDevelopment/kaminari-views-bootstrap"
 gem 'sanitize'

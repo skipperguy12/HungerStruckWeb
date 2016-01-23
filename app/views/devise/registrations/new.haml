@@ -4,7 +4,16 @@
     #error-true.hidden.alert
       %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#"} &#215;
       .message welp js doesnt work anymore, so ill tell you: we're broken come back later
+    %fieldset
+      %legend Register
+    %b
+      How it works:
 
+    %p
+      Enter your email, we'll give you a Minecraft server to connect to and be able to verify your account ownership.
+      When you connect, we'll send you a link where you can set up your account on our site.
+
+    %br
     #form
       #token-field.input-group
         %input.email-field.form-control{:placeholder => "Email address", :type => "text"}

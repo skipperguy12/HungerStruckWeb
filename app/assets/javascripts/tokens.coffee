@@ -1,7 +1,25 @@
+emailPattern = /// ^ #begin of line
+   ([\w.-]+)         #one or more letters, numbers, _ . or -
+   @                 #followed by an @ sign
+   ([\w.-]+)         #then one or more letters, numbers, _ . or -
+   \.                #followed by a period
+   ([a-zA-Z.]{2,6})  #followed by 2 to 6 letters or periods
+   $ ///i            #end of line and ignore case
+
 ready = ->
   $('.register-btn').click ->
     if $('.email-field').val() == "SPAGETT"
       window.location.href = "https://kblanks.github.io/";
+
+    unless $('.email-field').val().match emailPattern
+      $('.alert').removeClass 'hidden'
+      $('.alert').addClass 'alert-warning'
+      $('.message').text "That is not a valid email address"
+      $('#show-ip').addClass 'hidden'
+      $('#confirmation').addClass 'hidden'
+      $('#form').removeClass 'hidden'
+      return
+      
     console.log('line1')
     $('#show-ip').addClass 'hidden'
     $('#form').addClass 'hidden'

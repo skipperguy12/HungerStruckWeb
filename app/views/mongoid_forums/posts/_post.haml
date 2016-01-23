@@ -1,6 +1,6 @@
 %div{id: post.id}
   %b
-    = post.user.forum_display_name
+    = link_to post.user.forum_display_name, main_app.player_path(post.user.forum_display_name)
   = labels_for(post.user)
 
   %a.post-timestamp{href: "/forums/posts/" + post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (post.created_at == post.updated_at ? post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}

@@ -5,9 +5,11 @@ Rails.application.routes.draw do
       patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
   end
 
+  get '/:id', to: 'users#show', as: :player
+
   devise_for :users, :controllers => { :confirmations => "confirmations" }
 
-  get '/:id' => 'users#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

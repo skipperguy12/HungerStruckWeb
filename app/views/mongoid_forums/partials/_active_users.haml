@@ -1,8 +1,8 @@
 
-- users = User.active_users
+- users = User.active_users.map{|user| link_to user, main_app.player_path(user)}
 %h3
   Active Users
   %small= users.length
 
 - joined = users.join(', ')
-= joined
+= joined.html_safe

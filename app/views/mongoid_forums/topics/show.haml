@@ -15,7 +15,7 @@
       = icon('eye-slash')
     %small
       by
-      =@topic.user.forum_display_name
+      = link_to @topic.user.forum_display_name, main_app.player_path(@topic.user.forum_display_name)
 
 - if @topic.can_be_replied_to? && can?(:reply, @topic)
   = link_to "Reply to topic", new_topic_post_path(@topic), class: "btn btn-primary"

@@ -1,6 +1,6 @@
 %h2 Your subscriptions
 = paginate @topics, :theme => "tb3"
-  
+
 .table-responsive
   %table.table.table-striped
     %tr
@@ -35,11 +35,11 @@
           %br
           %small
             by
-            = topic.user.forum_display_name
+            = link_to topic.user.forum_display_name, main_app.player_path(topic.user.forum_display_name)
             = time_ago_in_words( topic.created_at )
             ago
         %td
-          = topic.posts.last.user.forum_display_name
+          = link_to topic.posts.last.user.forum_display_name, main_app.player_path(topic.posts.last.user.forum_display_name)
           = time_ago_in_words( topic.posts.last.created_at )
           ago
         %td

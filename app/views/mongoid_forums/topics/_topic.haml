@@ -15,13 +15,13 @@
     %small
       by
       %div{style: "display: inline-block; color: #{color_for(topic.user)}"}
-        = topic.user.forum_display_name
+        = link_to topic.user.forum_display_name, main_app.player_path(topic.user.forum_display_name)
       %span{"data-toggle" => "tooltip", "data-placement" => "right", title: (topic.posts.first.created_at == topic.posts.first.updated_at ? topic.posts.first.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.posts.first.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.posts.first.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
         = time_ago_in_words( topic.created_at )
         ago
   %td
     %div{style: "display: inline-block; color: #{color_for(topic.user)}"}
-      = topic.last_post.user.forum_display_name
+      = link_to topic.last_post.user.forum_display_name, main_app.player_path(topic.last_post.user.forum_display_name)
     %a{href: "#{root_path}posts/#{topic[:last_post_at]}" , "data-toggle" => "tooltip", "data-placement" => "right", title: (topic.last_post.created_at == topic.last_post.updated_at ? topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.last_post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
       = time_ago_in_words( topic[:last_post_at] )
       ago

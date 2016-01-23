@@ -47,7 +47,7 @@ gem 'redis-rack-cache'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :production do
-  gem 'unicorn'
+  gem 'unicorn', '5.0.1'
 end
 
 # Use Capistrano for deployment

@@ -1,0 +1,29 @@
+.col-lg-12
+  .well.bs-component.devise-form
+    = form_for resource, :as => resource_name, :url => update_user_confirmation_path, :html => {:method => 'patch'}, :id => 'activation-form' do |f|
+      = devise_error_messages!
+      %fieldset
+        %legend
+          Account Activation
+          - if resource.forum_display_name
+            for #{resource.forum_display_name}
+
+      - if @requires_password
+        .form-group
+          = f.label :password, class: "col-lg-2 control-label"
+          .col-lg-5
+            .form-control-wrapper
+              = f.password_field :password, class: "form-control empty", placeholder: "Password"
+              %span.material-input
+        %br
+        %br
+        .form-group
+          = f.label :password_confirmation, class: "col-lg-2 control-label"
+          .col-lg-5
+            .form-control-wrapper
+              = f.password_field :password_confirmation, class: "form-control empty", placeholder: "Password Confirmation"
+              %span.material-input
+        %br/
+        %br/
+        = hidden_field_tag :confirmation_token,@confirmation_token
+        = f.submit "Activate", :class => "btn btn-success"

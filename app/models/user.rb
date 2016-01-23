@@ -10,9 +10,8 @@ class User
   field :confirmation_sent_at, :type => Time
   field :unconfirmed_email,    :type => String
 
-  #has_one :key, class_name: "Key"
-  field :names, :type => Array, :default => []
-  field :uuid, :type => BSON::Binary
+  field :username,  :type => String
+  field :uuid,      :type => String
   ## Database authenticatable
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
@@ -75,7 +74,7 @@ class User
   end
 
   def forum_display_name
-    email
+    username
   end
 
   def password_required?
@@ -83,7 +82,6 @@ class User
   end
 
   def password_match?
-    puts "FUCKSDJLFUHLSKFHLSKDJFHSLKFJHLSDKJFHSDLKJFHSDLKJFHLDKSJHFLSKDJHF"
     self.errors[:password] << "can't be blank" if password.blank?
     self.errors[:password_confirmation] << "can't be blank" if password_confirmation.blank?
     self.errors[:password_confirmation] << "does not match password" if password != password_confirmation

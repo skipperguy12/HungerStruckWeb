@@ -1,0 +1,17 @@
+%section.page-header
+  %h2
+    = @user.forum_display_name
+.well
+  .row
+    .col-lg-3
+      = image_tag "https://minotar.net/helm/#{@user.forum_display_name}/150.png"
+    .col-lg-9
+      %h3 Forum Stats
+      %h2
+        = @posts_count
+        %small
+          forum posts
+      %h2
+        = @topics_count
+        %small
+          topics started

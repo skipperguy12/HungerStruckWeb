@@ -1,17 +1,22 @@
 %div{id: post.id}
-  %b
-    = link_to post.user.forum_display_name, main_app.player_path(post.user.forum_display_name)
-  = labels_for(post.user)
+  .pull-left{style: "position:relative;width:580px;"}
+    .pull-left{style: "position:relative; margin: 4px 5px 0 0;"}
+      %a{href: main_app.player_path(post.user.forum_display_name)}
+        = image_tag "https://minotar.net/helm/#{post.user.forum_display_name}/32.png", style: "border-radius: 3px;vertical-align: bottom;"
+    %b
+      = link_to post.user.forum_display_name, main_app.player_path(post.user.forum_display_name)
+    = labels_for(post.user)
+    %br
+    %a.post-timestamp{href: "/forums/posts/" + post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (post.created_at == post.updated_at ? post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
+      %small
+        - if post.created_at == post.updated_at
+          posted
+        - else
+          updated
+        = time_ago_in_words(post.created_at)
+        ago
 
-  %a.post-timestamp{href: "/forums/posts/" + post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (post.created_at == post.updated_at ? post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
-    %small
-      - if post.created_at == post.updated_at
-        posted
-      - else
-        updated
-      = time_ago_in_words(post.created_at)
-      ago
-
+  %br
   %br
   - if mongoid_forums_user && post.owner_or_admin?(mongoid_forums_user)
     .dropdown.pull-right

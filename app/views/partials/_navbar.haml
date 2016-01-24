@@ -41,9 +41,11 @@
         - if current_user
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0)"}
-              =current_user.email
+              =current_user.forum_display_name
               %b.caret
             %ul.dropdown-menu
+              %li
+                =link_to "Your Profile", main_app.player_path(current_user.forum_display_name)
               %li
                 =link_to "Edit account", main_app.edit_user_registration_path
               %li.divider

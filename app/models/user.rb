@@ -64,7 +64,7 @@ class User
 
   # Override mongoid_forums default permission
   def can_create_mongoid_forums_topics?(forum)
-    if forum.position == 0 #reserved announcements forum
+    if forum.position == 0 && forum.category.position == 0 #reserved announcements forum
       return forum.moderator?(self) || mongoid_forums_admin?
     else
       true

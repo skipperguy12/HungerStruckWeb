@@ -17,3 +17,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var ready;
+ready = function() {
+  if(window.location.hash && $(window.location.hash).prev().is("hr")) {
+    $(window.location.hash).prev().css(
+        {
+          "height": "6px",
+          "border": "0",
+          "box-shadow": "inset 0 6px 6px -6px #66CFF2"
+        }
+      )
+    
+  }
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

@@ -16,8 +16,6 @@
         = time_ago_in_words(post.created_at)
         ago
 
-  %br
-  %br
   - if mongoid_forums_user && post.owner_or_admin?(mongoid_forums_user)
     .dropdown.pull-right
       %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -37,6 +35,8 @@
     .pull-right
       = link_to 'Quote', new_topic_post_path(post.topic_id, :reply_to_id => post.id), :class => "btn btn-default"
 
+  %br
+  %br
   %br
   - if post.reply_to_id
     = render :partial => 'mongoid_forums/posts/quoted', :locals => {:post => post}

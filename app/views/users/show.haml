@@ -4,7 +4,7 @@
 .well
   .row
     .col-lg-3
-      = image_tag "https://minotar.net/helm/#{@user.forum_display_name}/150.png"
+      = get_image(@user.uuid, 150, "border-radius: 3px;vertical-align: bottom;" )
     .col-lg-9
       %h3 Forum Stats
       %h2

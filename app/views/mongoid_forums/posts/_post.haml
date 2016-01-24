@@ -2,7 +2,7 @@
   .pull-left{style: "position:relative;width:580px;"}
     .pull-left{style: "position:relative; margin: 4px 5px 0 0;"}
       %a{href: main_app.player_path(post.user.forum_display_name)}
-        = image_tag "https://minotar.net/helm/#{post.user.forum_display_name}/32.png", style: "border-radius: 3px;vertical-align: bottom;"
+        = get_image(post.user.uuid, 32, "border-radius: 3px;vertical-align: bottom;" )
     %b
       = link_to post.user.forum_display_name, main_app.player_path(post.user.forum_display_name)
     = labels_for(post.user)

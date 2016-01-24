@@ -9,11 +9,6 @@
 
     .navbar-collapse.collapse.navbar-responsive-collapse
       %ul.nav.navbar-nav
-        %li{:class => (current_page?("") ? "active" : nil )}
-          %a{href: "#"}
-            %i.fa.fa-book
-            About
-      %ul.nav.navbar-nav
         %li{:class => (params[:controller].starts_with?("mongoid_forums") && !params[:controller].starts_with?("mongoid_forums/admin") ? "active" : nil )}
           %a{href: "#{main_app.mongoid_forums_path}"}
             %i.fa.fa-comments

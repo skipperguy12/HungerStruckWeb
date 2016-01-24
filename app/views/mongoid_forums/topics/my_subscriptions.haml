@@ -4,11 +4,9 @@
 .table-responsive
   %table.table.table-striped
     %tr
-      %th.col-sm-1
-        %span.label.label-warning *
-      %th.byline
+      %th.col-sm-7.byline
         Name
-      %th.col-sm-1
+      %th.col-sm-2
         Last post
       %th.col-sm-1
         Posts
@@ -20,10 +18,6 @@
     - @topics.each do |sub|
       - topic = sub.subscribable
       %tr
-        %td
-          - if topic.unread_post_count(mongoid_forums_user) != 0
-            %span.label.label-warning
-              = topic.unread_post_count(mongoid_forums_user)
         %td
           = link_to topic.name, topic
           - if topic.pinned

@@ -1,9 +1,5 @@
 %tr
   %td
-    - if current_user && topic.unread_post_count(mongoid_forums_user) != 0
-      %span.label.label-warning
-        = topic.unread_post_count(mongoid_forums_user)
-  %td
     = link_to mongoid_forums_format(truncate(topic.name, length: 70)), topic
     - if topic.pinned
       = icon('bookmark')

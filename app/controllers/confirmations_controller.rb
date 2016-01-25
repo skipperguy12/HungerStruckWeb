@@ -5,6 +5,10 @@ class ConfirmationsController < Devise::ConfirmationsController
   skip_before_filter :require_no_authentication
   skip_before_filter :authenticate_user!
 
+  def new
+    redirect_to new_user_registration_path #Change this if you don't have the views on default path
+  end
+
   # PUT /resource/confirmation
   def update
     with_unconfirmed_confirmable do
@@ -38,7 +42,8 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
     unless @confirmable.errors.empty?
       self.resource = @confirmable
-      render 'devise/confirmations/new' #Change this if you don't have the views on default path
+      flash[:alert] = "That token is not valid!"
+      redirect_to new_user_registration_path #Change this if you don't have the views on default path
     end
   end
 

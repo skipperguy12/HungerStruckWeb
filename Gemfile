@@ -26,6 +26,7 @@ gem 'mongoid-forums', '1.0.6'
 gem 'validates_email_format_of'
 gem 'jquery-turbolinks'
 gem 'devise'
+gem "brakeman", :require => false
 
 gem 'haml'
 gem 'pry-rails'

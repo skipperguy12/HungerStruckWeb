@@ -17,10 +17,23 @@
         ago
   %td
     %div{style: "display: inline-block; color: #{color_for(topic.user)}"}
-      = link_to topic.last_post.user.forum_display_name, main_app.player_path(topic.last_post.user.forum_display_name)
-    %a{href: "#{root_path}posts/#{topic[:last_post_at]}" , "data-toggle" => "tooltip", "data-placement" => "right", title: (topic.last_post.created_at == topic.last_post.updated_at ? topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.last_post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
-      = time_ago_in_words( topic[:last_post_at] )
-      ago
+
+      .pull-left{style: "position:relative;min-width:300px;"}
+        .pull-left{style: "margin: 5px 5px 0 0;"}
+          %a{href: main_app.player_path(topic.last_post.user.forum_display_name)}
+            = get_image(topic.last_post.user.uuid, 32, "border-radius: 3px;vertical-align: bottom;" )
+        %b
+          = link_to topic.last_post.user.forum_display_name, main_app.player_path(topic.last_post.user.forum_display_name)
+        %br
+          %small
+          %a.post-timestamp{href: "/forums/posts/" + topic.last_post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (topic.last_post.created_at == topic.last_post.updated_at ? topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.last_post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
+            %small
+              - if topic.last_post.created_at == topic.last_post.updated_at
+                posted
+              - else
+                updated
+              = time_ago_in_words(topic.last_post.created_at)
+              ago
   %td
     = topic.posts.count
   %td

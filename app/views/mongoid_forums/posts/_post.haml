@@ -1,6 +1,6 @@
 %div{id: post.id}
-  .pull-left{style: "position:relative;width:580px;"}
-    .pull-left{style: "position:relative; margin: 4px 5px 0 0;"}
+  .pull-left{style: "position:relative;min-width:300px;"}
+    .pull-left{style: "margin: 5px 5px 0 0;"}
       %a{href: main_app.player_path(post.user.forum_display_name)}
         = get_image(post.user.uuid, 32, "border-radius: 3px;vertical-align: bottom;" )
     %b

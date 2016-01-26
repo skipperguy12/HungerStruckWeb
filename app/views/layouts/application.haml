@@ -1,11 +1,11 @@
 !!!
 %html
   %head
-    %title MongoidForums
+    %title
+      = yield :title if content_for? :title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    = yield(:header) if content_for? :header
     = csrf_meta_tags
   %body
     = render 'partials/navbar'

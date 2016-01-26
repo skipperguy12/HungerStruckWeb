@@ -1,3 +1,5 @@
+- content_for :title, @forum.name
+
 %section
   = link_to "Add a topic", forum_path(@forum) + '/new', :class => "btn btn-small btn-primary pull-right" if can? :create_topic, @forum
   %br

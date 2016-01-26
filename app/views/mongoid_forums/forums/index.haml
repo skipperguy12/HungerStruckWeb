@@ -1,3 +1,4 @@
+- content_for :title, "What's new?"
 %h2 What's new?
 = paginate @recent, :theme => 'tb3'
 = render partial: 'mongoid_forums/topics/table', :locals => {:topics => @recent}

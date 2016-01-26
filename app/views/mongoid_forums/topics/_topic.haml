@@ -15,6 +15,10 @@
       %span{"data-toggle" => "tooltip", "data-placement" => "right", title: (topic.posts.first.created_at == topic.posts.first.updated_at ? topic.posts.first.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.posts.first.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.posts.first.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
         = time_ago_in_words( topic.created_at )
         ago
+        - if @recent
+          %small
+            in
+            = link_to "#{topic.forum.category.name} (#{topic.forum.name})", topic.forum
   %td
     %div{style: "display: inline-block; color: #{color_for(topic.user)}"}
 
@@ -26,7 +30,7 @@
           = link_to topic.last_post.user.forum_display_name, main_app.player_path(topic.last_post.user.forum_display_name)
         %br
           %small
-          %a.post-timestamp{href: "/forums/posts/" + topic.last_post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (topic.last_post.created_at == topic.last_post.updated_at ? topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.last_post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
+          %a{href: "/forums/posts/" + topic.last_post.id, "data-toggle" => "tooltip", "data-placement" => "right", title: (topic.last_post.created_at == topic.last_post.updated_at ? topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") : topic.last_post.updated_at.strftime("%A %b %d, %Y - %I:%m %p") + " (Posted on " + topic.last_post.created_at.strftime("%A %b %d, %Y - %I:%m %p") + ")")}
             %small
               - if topic.last_post.created_at == topic.last_post.updated_at
                 posted

@@ -32,6 +32,8 @@ gem 'haml'
 gem 'pry-rails'
 gem 'kaminari'
 
+gem "flat-ui-rails"
+#gem 'bootflat-rails'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'bootstrap-wysihtml5-rails'
 gem 'bootstrap-sass', '~> 3.3.5'

@@ -9,6 +9,8 @@
       = icon('times-circle')
     - if @topic.hidden
       = icon('eye-slash')
+    - if @topic.spam
+      = icon('trash-o')
     %small
       by
       = link_to @topic.user.forum_display_name, main_app.player_path(@topic.user.forum_display_name)
@@ -31,6 +33,8 @@
         = link_to t("mongoid_forums.topics.actions.lock.#{@topic.locked}"), toggle_lock_admin_topic_path(@forum, @topic)
       %li{:role => "presentation"}
         = link_to t("mongoid_forums.topics.actions.pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@forum, @topic)
+      %li{:role => "presentation"}
+        = link_to t("mongoid_forums.topics.show.spam.#{@topic.spam}"), toggle_spam_admin_topic_path(@forum, @topic)
 
 = paginate @posts, :theme => 'tb3'
 

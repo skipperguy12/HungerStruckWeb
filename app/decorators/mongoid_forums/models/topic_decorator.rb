@@ -1,4 +1,5 @@
 MongoidForums::Topic.class_eval do
+    field :spam, type: Boolean, default: false
 
     # Redefinition
     # Near total change, adds redis caching

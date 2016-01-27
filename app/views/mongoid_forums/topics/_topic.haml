@@ -1,4 +1,4 @@
-%tr
+%tr{:class => "#{if topic.spam? then "warning" else "" end}"}
   %td
     = link_to mongoid_forums_format(truncate(topic.name, length: 70)), topic
     - if topic.pinned
@@ -7,6 +7,8 @@
       = icon('times-circle')
     - if topic.hidden
       = icon('eye-slash')
+    - if topic.spam
+      = icon('trash-o')
     %br
     %small
       by

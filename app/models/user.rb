@@ -71,6 +71,11 @@ class User
     end
   end
 
+  # Override mongoid_forums default permission
+  def can_read_mongoid_forums_topic?(topic)
+    (!topic.hidden? && !topic.spam?) || mongoid_forums_admin? || topic.forum.moderator?(self)
+  end
+
   def get_mod_groups
     array = Array.new
     MongoidForums::Group.each do |group|

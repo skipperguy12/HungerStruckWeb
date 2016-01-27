@@ -1,3 +1,13 @@
+MongoidForums::Engine.routes.draw do
+  namespace :admin do
+    resources :topics do
+      member do
+        get 'toggle_spam' => 'topics#toggle_spam', :as => 'toggle_spam'
+      end
+    end
+  end
+end
+
 Rails.application.routes.draw do
   mount MongoidForums::Engine, :at => "/forums"
 

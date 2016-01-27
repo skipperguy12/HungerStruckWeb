@@ -20,7 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  mongoid:
+  mongoid_forums:
     general:
       deleted: [deleted]
       forum: Forum
@@ -137,6 +137,7 @@ en:
       new: Creating a new topic
       edit: Editing topic
       not_created: This topic could not be created.
+      not_created_time: This topic could not be created.
       deleted: Your topic has been deleted.
       cannot_delete: You cannot delete a topic you do not own.
       updated: This topic has been updated.
@@ -158,6 +159,9 @@ en:
       pinned:
         'true': This topic is now pinned.
         'false': This topic is now unpinned.
+      spam:
+        'true': This topic is now marked as spam.
+        'false': This topic is now no longer marked as spam.
     topics:
       show:
         reply: Reply
@@ -175,6 +179,9 @@ en:
         pin:
           'true': Unpin this topic
           'false': Pin this topic
+        spam:
+          'true': This topic is not spam
+          'false': Mark this topic as spam
     post:
       buttons:
         reply: Post Reply

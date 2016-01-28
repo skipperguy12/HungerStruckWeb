@@ -5,20 +5,23 @@
 @import "bootstrap-sprockets";
 
 // Import cerulean variables
-@import "bootswatch/Flatly/variables";
+//@import "bootswatch/Flatly/variables";
 
 
 // Then bootstrap itself
 //@import "bootflat";
-@import "bootstrap";
+//@import "bootstrap";
 
 
 // And finally bootswatch style itself
-@import "bootswatch/Flatly/bootswatch";
+//@import "bootswatch/Flatly/bootswatch";
 @import "bootstrap-wysihtml5.css";
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+@import "styles.css";
+@import "animate.css";
 
 @import "*";
 
@@ -28,9 +31,6 @@ table a:not(.btn),
 }
 
 
-.navbar-default {
-margin-bottom: 30;
-}
 
 h1{
 margin-top:0;
@@ -70,7 +70,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 60px;
-  background-color:  $brand-primary ;
+  background-color:  #ffffff ;
 }
 
 

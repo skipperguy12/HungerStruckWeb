@@ -9,13 +9,16 @@
     %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
   %body
     = render 'partials/navbar'
+    .topic
+      .container
+        .row
+          .col-sm-4
+            %h3
+              Forums
+
     .container
       = render partial: "partials/flash_messages", flash: flash
-      .page-header
-        %h1
-          Forums
-          %small
-            Socialize with your friends
+
       .row
         .col-xs-12.col-sm-3.sidebar
           = render "mongoid_forums/partials/categories"

@@ -2,17 +2,18 @@
 %html
   %head
     %title
-      Admin Panel
+      = yield :title if content_for? :title
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
-    %meta{:content => "width=device-width, initial-scale=1, maximum-scale=1", :name => "viewport"}
   %body
     = render 'partials/navbar'
-    .container
+    - if params[:controller].starts_with?('welcome')
       = render partial: "partials/flash_messages", flash: flash
-      .row
-        .col-xs-12
-          = yield
+      = yield
+    - else
+      .container
+        = render partial: "partials/flash_messages", flash: flash
+        = yield
     = render 'partials/footer'

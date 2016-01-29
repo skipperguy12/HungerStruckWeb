@@ -5,6 +5,14 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.index-3-jumbotron__btn .btn-lg, .btn-group-lg > .btn {
+  padding: 20px 24px;
+  font-size: 17px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -10563,6 +10571,7 @@ footer {
     color: #fff;
   }
 }
+
 
 @media (min-width: 992px) {
   .index-3__jumbotron {

@@ -1,8 +1,7 @@
 - content_for :title, "HungerStruck"
-
 .home-parallax__container
   .home-parallax.bg-parallax.blackout{"data-blackout-max" => "70", :style => "background-image: none;"}
-    .bg-parallax__layer{:style => "background-image: url(#{image_url("help.png")}); -webkit-transform: translate(0, -75px);"}
+    .bg-parallax__layer{:style => "transform: translate(0px, -70px); background-image: url(#{image_url("help.png")});"}
     .blackout__layer
     .home-parallax__inner
       .container
@@ -10,10 +9,17 @@
           .col-xs-12.col-sm-10.col-md-8.col-sm-offset-1.col-md-offset-2
             %h1.home-parallax__title.inverse.animated.fadeInDown
               HungerStruck
+              %br
+                HungerGames in Minecraft
             %p.home-parallax__subtitle.inverse.animated.fadeInUp.delay-1
-              A competitive Hunger Games server in Minecraft
+              A unique Minecraft server with an amazing community
             %a.btn.btn-lg.btn-primary.animated.fadeInUp.delay-2{:href => new_user_registration_path}
               Play
+        / / .row
+      / / .container
+    / / .home-parallax__inner
+  / / .home-parallax
+
 .container
   .row
     .col-sm-12

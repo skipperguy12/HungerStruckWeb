@@ -1,15 +1,57 @@
-
 - content_for :title, "HungerStruck"
 
-.index-3__jumbotron
-  .index-3-jumbotron__inner
-    .container
-      .row.row_v-centered
-        .col-sm-12.col-md-6
-          %h1.index-3-jumbotron__heading.animated.fadeInDown
-            HungerStruck
-            %br/
-          %p.index-3-jumbotron__subheading.animated.fadeInUp.delay-1
-            A competitive Hunger Games server in Minecraft
-          .index-3-jumbotron__btn.animated.fadeInUp.delay-2
-            %a.btn.btn-primary.btn-lg{:href => new_user_registration_path} Play
+.home-parallax__container
+  .home-parallax.bg-parallax.blackout{"data-blackout-max" => "70", :style => "background-image: none;"}
+    .bg-parallax__layer{:style => "background-image: url(#{image_url("help.png")}); -webkit-transform: translate(0, -75px);"}
+    .blackout__layer
+    .home-parallax__inner
+      .container
+        .row
+          .col-xs-12.col-sm-10.col-md-8.col-sm-offset-1.col-md-offset-2
+            %h1.home-parallax__title.inverse.animated.fadeInDown
+              HungerStruck
+            %p.home-parallax__subtitle.inverse.animated.fadeInUp.delay-1
+              A competitive Hunger Games server in Minecraft
+            %a.btn.btn-lg.btn-primary.animated.fadeInUp.delay-2{:href => new_user_registration_path}
+              Play
+.container
+  .row
+    .col-sm-12
+      .call-to-action
+        .row
+          .col-sm-9
+            .call-to-action__content
+              %h3.call-to-action__heading
+                Heads Up!
+              This site is under heavy development right now! It may go down, lose data, etc. Please understand that this is our beta! We hope you enjoy.
+.home-features_2
+  .container
+    .row
+      .col-sm-4
+        .home-features_2__item
+          .home-features_2__icon
+            %i.fa.fa-refresh
+          .home-features_2__body
+            %h3.home-features_2__heading
+              Renaissance
+              %blockquote
+                rebirth; revival;
+            .home-features_2__content
+              A rebirth of HungerGames in Minecraft done right.
+      .col-sm-4
+        .home-features_2__item
+          .home-features_2__icon
+            %i.fa.fa-comments
+          .home-features_2__body
+            %h3.home-features_2__heading Community
+            .home-features_2__content
+              HungerStruck has a very close knit community, coming from the original HungerCraft servers from over 3 years ago.
+      .col-sm-4
+        .home-features_2__item
+          .home-features_2__icon
+            %i.fa.fa-futbol-o
+          .home-features_2__body
+            %h3.home-features_2__heading Competitive Maps
+            .home-features_2__content
+              We have a very dedicated development team, and an impressive plugin to offer a unique experience in a variety of maps.
+%br /

@@ -20,7 +20,7 @@
 -elsif mongoid_forums_user
   = link_to "Subscribe", subscribe_topic_path(@topic), class: "btn btn-success"
 - if mongoid_forums_admin?
-  .dropdown.pull-right
+  .btn-group.pull-right
     %button#dropdownMenu1.btn.btn-default.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :type => "button"}
       Moderate
       %span.caret

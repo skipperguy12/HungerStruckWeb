@@ -1,4 +1,10 @@
-%h1 New Post
+%h1
+  New Post
+  %small
+    in topic
+    = link_to "#{@topic.name}", @topic
+    by
+    = link_to @topic.user.forum_display_name, @topic
 - if params[:reply_to_id]
   - replying_to = MongoidForums::Post.find(params[:reply_to_id])
   In reply to:
@@ -7,10 +13,9 @@
     %small
       = replying_to.user.forum_display_name
 
-
 = form_for ([@topic, @post]) do |f|
-  = f.label :text
+  = f.label "Your Post"
   %br
   = render :partial => "form", :locals => { :f => f }
   %br
-  = f.submit "Create Reply", :class => "btn btn-primary pull-right", :disable_with => "Creating..."
+  = f.submit "Create Reply", :class => "btn pull-right", :disable_with => "Creating..."

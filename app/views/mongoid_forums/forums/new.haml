@@ -103,17 +103,19 @@
     background: orange !important;
     }
 %h3
-  New Topic in
-  = @forum.category.name
-  Category
+  New Topic
+  %small
+    = "#{@forum.category.name}: #{@forum.name}"
+
 
 = simple_form_for @topic, :url => forum_create_path do |f|
-  = f.label :name
-  = f.text_field :name
+  .row
+    .col-xs-5
+      = f.label :name
+      = f.text_field :name, :class => "form-control"
   %br
-  %br
-  = f.label :post
-  = f.simple_fields_for :posts do |post|
-    = render :partial => "mongoid_forums/posts/form", :locals => { :f => post }
-  %br
-  = f.submit "Create Topic", :class => "btn", :disable_with => "Creating..."
+  .row
+    .col-xs-12
+      = f.simple_fields_for :posts do |post|
+        = render :partial => "mongoid_forums/posts/form", :locals => { :f => post }
+      = f.submit "Create Topic", :class => "btn", :disable_with => "Creating..."

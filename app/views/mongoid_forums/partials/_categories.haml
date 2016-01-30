@@ -1,6 +1,6 @@
 .section#forum-sidebar
   .panel.panel-default
-    .panel-body
+    .panel-body.text-center
       %ul
         %li{:role => :presentation, :class => current_page?(forums_path) ? "active" : ""}
           = link_to "What's New?", forums_path
@@ -14,7 +14,7 @@
     - @categories.each do |category|
       .panel-heading
         = category.name
-      .panel-body
+      .panel-body.text-center
         %ul
           - category.forums.asc(:position).each do |forum|
             %li{:role => "presentation", :class => (@forum != nil && @forum.id == forum.id) ? "active" : ""}

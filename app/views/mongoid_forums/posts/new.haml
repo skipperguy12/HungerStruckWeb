@@ -4,7 +4,7 @@
     in topic
     = link_to "#{@topic.name}", @topic
     by
-    = link_to @topic.user.forum_display_name, @topic
+    = link_to @topic.user.forum_display_name, @topic.user
 - if params[:reply_to_id]
   - replying_to = MongoidForums::Post.find(params[:reply_to_id])
   In reply to:

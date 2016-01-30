@@ -1,0 +1,22 @@
+.col-lg-8
+  .well.bs-component.devise-form
+    = form_for(resource, as: resource_name, url: password_path(resource_name), :html => {:class => "form-horizontal", method: :put}) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      %fieldset
+        %legend Change Your Password
+        .form-group
+          = f.label :password, class: "col-lg-2 control-label"
+          .col-lg-10
+            .form-control-wrapper
+              = f.password_field :password, class: "form-control empty", placeholder: "Password", autocomplete: "off"
+              %span.material-input
+        .form-group
+          = f.label :password_confirmation, class: "col-lg-2 control-label"
+          .col-lg-10
+            .form-control-wrapper
+              = f.password_field :password_confirmation, class: "form-control empty", placeholder: "Password", autocomplete: "off"
+              %span.material-input
+            %br/
+            = button_tag("Change My Password")
+= render "devise/shared/links"

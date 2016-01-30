@@ -1,0 +1,23 @@
+.topic
+  .container
+    .row
+      .col-sm-4
+        %h3 Bad Request
+      .col-sm-8
+        %ol.breadcrumb.pull-right.hidden-xs
+          %li
+            %a{:href => "/"} Home
+          %li.active Bad Request
+
+.container
+  .row
+    .col-xs-12
+      .error-page__container
+        .error-page__404 400
+        .error-page__heading
+          Bad Request
+        .error-page__desc
+          Reload the page some time later or click the link below to go to the homepage.
+        .error-page__leave
+          %a.btn.btn-lg.btn-block.btn-secondary{:href => "/"}
+            Go to the homepage

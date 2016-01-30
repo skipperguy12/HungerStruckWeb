@@ -24,7 +24,7 @@ ready = function() {
         {
           "height": "6px",
           "border": "0",
-          "box-shadow": "inset 0 6px 6px -6px blue"
+          "box-shadow": "inset 0 6px 6px -6px #ed3e49"
         }
       )
     );

@@ -124,7 +124,7 @@ $(function() {
 
 /**
  * Smooth scroll to anchor
- */
+
 
 $(function() {
   $('a[href*=#]').not('[href=#], [data-toggle], [data-slide]').click(function() {
@@ -142,7 +142,7 @@ $(function() {
     }
   });
 });
-
+*/
 
 /**
  * Initialize Tooltips & Popovers

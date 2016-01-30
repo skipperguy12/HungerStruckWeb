@@ -6,8 +6,6 @@ emailPattern = /// ^ #begin of line
    ([a-zA-Z.]{2,6})  #followed by 2 to 6 letters or periods
    $ ///i            #end of line and ignore case
 
-alert("hello world it loadedddddddd");
-
 ready = ->
   $('.register-btn').click ->
     happen()

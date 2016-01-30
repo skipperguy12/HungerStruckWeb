@@ -23,7 +23,7 @@
     %div{style: "display: inline-block; color: #{color_for(topic.user)}"}
 
       .pull-left{style: "position:relative;min-width:300px;"}
-        .pull-left{style: "margin: 5px 5px 0 0;"}
+        .pull-left{style: "margin: 3px 5px 0 0;"}
           %a{href: main_app.player_path(topic.last_post.user.forum_display_name)}
             = get_image(topic.last_post.user.uuid, 32, "border-radius: 3px;vertical-align: bottom;" )
         %b

@@ -55,7 +55,7 @@ happen = ->
       $('.alert').addClass 'alert-success'
       $('.message').text 'Your token has successfully been created.'
       $('#show-ip').removeClass 'hidden'
-      $('#token').text "#{data.token}.register.hstrk.xyz"
+      $('#token').text "#{data.token}.register.hungerstruck.net"
 
       console.log($('.email-field').val())
       console.log(data)

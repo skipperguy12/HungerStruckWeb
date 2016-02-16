@@ -29,6 +29,7 @@
         %a{:href => "#", :tabindex => "-1"} Move topic
         %ul.dropdown-menu
           - @categories.each do |category|
+            - next if category.forums.select{ |f| f.id != @topic.forum.id}.length == 0
             %li.dropdown-submenu
               %a{:href => "#", :tabindex => "-1"}
                 = category.name

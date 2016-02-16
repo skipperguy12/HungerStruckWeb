@@ -1,3 +1,13 @@
+MongoidForums::Engine.routes.draw do
+  namespace :admin do
+    resources :topics do
+      member do
+        get 'change_forum' => 'topics#change_forum', :as => 'change_forum'
+      end
+    end
+  end
+end
+
 Rails.application.routes.draw do
   mount MongoidForums::Engine, :at => "/forums"
 

@@ -25,6 +25,18 @@
       Moderate
       %span.caret
     %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+      %li.dropdown-submenu
+        %a{:href => "#", :tabindex => "-1"} Move topic
+        %ul.dropdown-menu
+          - @categories.each do |category|
+            %li.dropdown-submenu
+              %a{:href => "#", :tabindex => "-1"}
+                = category.name
+              %ul.dropdown-menu
+                - category.forums.asc(:position).each do |forum|
+                  - next if forum.id == @topic.forum.id
+                  %li{:role => "presentation"}
+                    = link_to(forum.name, change_forum_admin_topic_path(:format => @topic, :new_forum => forum.id), :confirm => "Are you sure?")
       %li{:role => "presentation"}
         = link_to t("mongoid_forums.topics.actions.hide.#{@topic.hidden}"), toggle_hide_admin_topic_path(@forum, @topic)
       %li{:role => "presentation"}

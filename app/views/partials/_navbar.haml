@@ -52,9 +52,9 @@
                 %li
                   =link_to "Your Profile", main_app.player_path(current_user.forum_display_name)
                 %li
-                  =link_to "Edit account", main_app.edit_user_registration_path
+                  =link_to "Edit Account", main_app.edit_user_registration_path
                 %li
-                  =link_to('Logout', main_app.destroy_user_session_path, :method => :delete)
+                  =link_to('Log Out', main_app.destroy_user_session_path, :method => :delete)
           - else
             %li.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "javascript:void(0)"}

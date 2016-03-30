@@ -1,6 +1,16 @@
-%footer
-  .footer_bottom
-    .container
-      .row
-        %p
-          %a#copyright © #{Time.now.year} Enviark&trade;
+.env-footer
+  .container
+    .footer-left
+      %h4.brand-header
+        an
+        %a{href: "https://www.enviark.co"} Enviark
+        project
+      %i.fa.fa-twitter
+      %a{href: "https://twitter.com/PlayEnviark", target: "_blank"} @PlayEnviark
+    .footer-right
+      %h5
+        Latest revision:
+        %i.fa.fa-github
+        %a{href:"https://github.com/thislinkwilljust404", target: "_blank"} 3cd12a
+      %h5
+      %kbd Update footer design, closes #12

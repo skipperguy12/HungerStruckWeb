@@ -9,11 +9,12 @@
     = csrf_meta_tags
   %body
     = render 'partials/navbar'
-    - if params[:controller].starts_with?('welcome')
-      = render partial: "partials/flash_messages", flash: flash
-      = yield
-    - else
-      .container
+    .main-content
+      - if params[:controller].starts_with?('welcome')
         = render partial: "partials/flash_messages", flash: flash
         = yield
+      - else
+        .container
+          = render partial: "partials/flash_messages", flash: flash
+          = yield
     = render 'partials/footer'

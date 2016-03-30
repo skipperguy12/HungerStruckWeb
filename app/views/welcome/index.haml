@@ -2,28 +2,13 @@
 .index-3__jumbotron
   .index-3-jumbotron__inner
     .container
-      .row.row_v-centered
-        .text-center
-          %h1.index-3-jumbotron__heading.inverse.animated.fadeInDown
-            HungerStruck
-          .index-3-jumbotron__btn.animated.fadeInUp.delay-2
-            %a.btn.btn-lg.btn-primary{:href => new_user_registration_path}
-              Register
-        / / .row
-      / / .container
-    / / .home-parallax__inner
-  / / .home-parallax
+      .jumbotron-left
+        %h1.index-3-jumbotron__heading HungerStruck is...
+        %h3.index-3-jumbotron__subheading.hs-is a Minecraft PVP community
+      .jumbotron-right
+        %a.btn-lg.btn-primary.register-main{href: "/users/sign_up"} Register
 %br
-.container
-  .row
-    .col-sm-12
-      .call-to-action
-        .row
-          .col-sm-9
-            .call-to-action__content
-              %h3.call-to-action__heading
-                Heads Up!
-              This site is under heavy development right now! It may go down, lose data, etc. Please understand that this is our beta! We hope you enjoy.
+%br
 .home-features_2
   .container
     .row
@@ -34,10 +19,8 @@
           .home-features_2__body
             %h3.home-features_2__heading
               Renaissance
-              %blockquote
-                rebirth; revival;
             .home-features_2__content
-              A rebirth of HungerGames in Minecraft done right.
+              We have created advanced private plugins designed specifically for our games and infrastructure.
       .col-sm-4
         .home-features_2__item
           .home-features_2__icon
@@ -53,5 +36,4 @@
           .home-features_2__body
             %h3.home-features_2__heading Competitive Maps
             .home-features_2__content
-              We have a very dedicated development team, and an impressive plugin to offer a unique experience in a variety of maps.
-%br /
+              We have a dedicated development team, and an impressive set of custom plugins to offer a unique experience in a variety of maps.

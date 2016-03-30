@@ -1,0 +1,31 @@
+.main-content {
+  padding-bottom: 100px;
+}
+
+.env-footer {
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  clear: both;
+
+  padding: 35px;
+  background-color: #f1f1f1;
+  color: #000000;
+  border-top: 1px solid rgba(0, 0, 0, .05);
+
+  text-decoration: none;
+  a {
+    color: #4d4d4d;
+  }
+
+  .footer-left {
+    float: left;
+  }
+
+  .footer-right {
+    float: right;
+    text-align: right;
+  }
+
+}
